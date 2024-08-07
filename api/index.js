@@ -3,7 +3,9 @@ import mongoose from 'mongoose';
 import userRouter from "./routes/user.route.js"
 import authRouter from "./routes/auth.route.js"
 const mongoURI = "mongodb+srv://harsh:harsh@mern-estate.huxd3yr.mongodb.net/mern_estate";
+import { configDotenv } from 'dotenv';
 
+configDotenv();
 const connectToMongo = async () => {
     try {
         await mongoose.connect(mongoURI, {
