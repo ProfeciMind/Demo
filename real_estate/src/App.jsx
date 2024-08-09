@@ -5,6 +5,7 @@ import Profiel1 from "./pages/Profiel1";
 import Signup from "./pages/Signup";
 import Signinpage from "./pages/Signinpage";
 import Aboutpage from "./pages/Aboutpage";
+import PrivateRoute from "./Components/PrivateRoute";
 
 
 
@@ -14,10 +15,12 @@ export default function App() {
     <Header />
       <Routes>
        <Route path="/" element={<HomePage/> }/>
-       <Route path="/Profile1" element={<Profiel1 />}/>
+       <Route path="/Profiel1" element={<Profiel1 />}/>
        <Route path="/Signup" element={<Signup />}/>
        <Route path="/Signinpage" element={<Signinpage/> }/>
+       <Route element={<PrivateRoute/>} >
        <Route path="/Aboutpage" element={<Aboutpage/> }/>
+       </Route>
       </Routes>
     </BrowserRouter>
   );
