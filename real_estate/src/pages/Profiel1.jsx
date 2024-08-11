@@ -19,7 +19,7 @@ import {
   signOutUserSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 function Profile1() {
   const fileref = useRef(null);
@@ -203,6 +203,10 @@ function Profile1() {
         >
           {loading ? "loading..." : "Update"}
         </button>
+        <Link  className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' 
+        to={"/createListing"}>
+        Create Listing
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
         <span
@@ -215,7 +219,6 @@ function Profile1() {
           Sign Out
         </span>
       </div>
-
       <p className="text-red-700 mt-5 ">{error ? error : ""}</p>
       <p className="text-green-500 mt-5">
         {updateSuccess ? "User is updated" : ""}

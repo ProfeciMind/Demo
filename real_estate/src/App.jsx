@@ -5,6 +5,7 @@ import Profiel1 from "./pages/Profiel1";
 import Signup from "./pages/Signup";
 import Signinpage from "./pages/Signinpage";
 import Aboutpage from "./pages/Aboutpage";
+import CreateListing from "./pages/CreateListing1";
 import PrivateRoute from "./Components/PrivateRoute";
 
 
@@ -15,11 +16,12 @@ export default function App() {
     <Header />
       <Routes>
        <Route path="/" element={<HomePage/> }/>
-       <Route path="/Profiel1" element={<Profiel1 />}/>
+       <Route path="/Aboutpage" element={<Aboutpage/> }/>
        <Route path="/Signup" element={<Signup />}/>
        <Route path="/Signinpage" element={<Signinpage/> }/>
        <Route element={<PrivateRoute/>} >
-       <Route path="/Aboutpage" element={<Aboutpage/> }/>
+        <Route path="/Profiel1" element={<Profiel1 />}/>
+        <Route path="/CreateListing" element={<CreateListing /> }/>
        </Route>
       </Routes>
     </BrowserRouter>
