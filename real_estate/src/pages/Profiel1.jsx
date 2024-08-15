@@ -143,6 +143,7 @@ function Profile1() {
   const handleShowListing= async ()=>{
     try {
       setShowListingError(false);
+      
       const res=await fetch(`/api/user/listing/${currentUser._id}`);
       const data=await res.json();
       if (data.success===false){
@@ -274,7 +275,9 @@ function Profile1() {
             </Link>
             <div className="flex flex-col items-center">
               <button onClick={()=>handleListingDelete(listing._id)}className="text-red-700 uppercase">DELETE</button>
+              <Link to={`/updateListing/${listing._id}`}>
               <button className="text-green-700 uppercase">EDIT</button>
+              </Link>
             </div>
           </div>
         ))}

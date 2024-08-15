@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   getDownloadURL,
   getStorage,
@@ -7,9 +7,9 @@ import {
 } from "firebase/storage";
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useParams} from "react-router-dom";
 
-function  CreateListing() {
+function UpdateList() {
   // const ref=useRef(null);
   const [files, setfiles] = useState([]);
   const [formData, setFormData] = useState({
@@ -32,8 +32,23 @@ function  CreateListing() {
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const navigate=useNavigate();
+  const params=useParams();
 
-  console.log(formData);
+  useEffect(()=>{
+    const fetchListing= async ()=>{
+        const listingId=params.listingId;
+        console.log("Listing",listingId);
+        
+        const res = await fetch(`/api/listing/get/${listingId}`);
+        const data = await res.json();
+        if(data.success===false){
+           console.log(data.message);
+           return;
+        }
+        setFormData(data)
+    }
+    fetchListing();
+  },[])
 
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageURL.length < 7) {
@@ -139,17 +154,21 @@ function  CreateListing() {
       if(+formData.regularPrice < +formData.discountPrice) return setError("Discounted Price must be lower than regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/listing/create", {
+      console.log("Update:",params.listingId);
+      
+      const res = await fetch(`/api/listing/update/${params.listingId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...formData,
+          ...formData,      
           useRef: currentUser._id,
         }),
       });
       const data = await res.json();
+      console.log("data",data);
+      
       setLoading(false);
       if (data.success === false) {
         setError(data.message);
@@ -164,7 +183,7 @@ function  CreateListing() {
   return (
     <main className="p-3 max-w-4xl mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">
-        Create a Listing
+        Update Your Listing
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
         {/* Main Form Fields */}
@@ -180,7 +199,7 @@ function  CreateListing() {
             onChange={handleChange}
             value={formData.name}
           />
-          <input
+          <input 
             type="text"
             placeholder="Description"
             className="p-3 border rounded-lg"
@@ -355,8 +374,8 @@ function  CreateListing() {
                 </button>
               </div>
             ))}
-          <button  disabled={loading || uploading} className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-            {loading ? "Creating" : "Create Listing"}
+          <button type="submit" disabled={loading || uploading} className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+            {loading ? "Updating..." : "Update Listing "}
           </button>
           {error && <p className="text-red-800 text-sm">{error}</p>}
         </div>
@@ -365,4 +384,4 @@ function  CreateListing() {
   );
 }
 
-export default CreateListing;
+export default UpdateList;
