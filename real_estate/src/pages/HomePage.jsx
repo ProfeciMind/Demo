@@ -17,7 +17,7 @@ function HomePage() {
   useEffect(() => {
     const fetchofferlistings = async () => {
       try {
-        const res = await fetch(`/api/listing/get?offer=true&limit=5`);
+        const res = await fetch(`/api/listing/get?offer=true&limit=6`);
         const data = await res.json();
         console.log("data", data);
 
@@ -30,7 +30,7 @@ function HomePage() {
 
     const fetchRentListings = async () => {
       try {
-        const res = await fetch(`/api/listing/get?type=Rent&limit=5`);
+        const res = await fetch(`/api/listing/get?type=Rent&limit=6`);
         const data = await res.json();
         setRentListings(data);
         fetchSaleListings();
@@ -41,7 +41,7 @@ function HomePage() {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch(`/api/listing/get?type=Sell&limit=5`);
+        const res = await fetch(`/api/listing/get?type=Sell&limit=4`);
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
@@ -96,7 +96,7 @@ function HomePage() {
           ))}
       </Swiper>
 
-      <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10 ">
+      <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-9 ">
         {offerListings && (
           <div>
             <div className="my-3">

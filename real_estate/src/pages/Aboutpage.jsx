@@ -32,15 +32,15 @@ const Aboutpage = () => {
           About Us
         </h1>
         <p className='text-slate-700 mb-6'>
-          Welcome to <span className='font-semibold'>[Your Real Estate Company Name]</span>!
-          At <span className='font-semibold'>[Your Real Estate Company Name]</span>, we believe that finding a home is not just 
+          Welcome to <span className='font-semibold'>Dream Homes</span>!
+          At <span className='font-semibold'>Dream Homes</span>, we believe that finding a home is not just 
           about buying property—it's about discovering a place where your heart feels at 
           ease and your dreams come alive. Our mission is to guide you through every step of this 
           exciting journey, making the process as seamless and rewarding as possible.
         </p>
         <p className='text-slate-700 mb-6'>
           Founded on the principles of integrity, transparency, and exceptional service,
-          <span className='font-semibold'> [Your Real Estate Company Name]</span> is a team of dedicated real estate professionals
+          <span className='font-semibold'> Dream Homes</span> is a team of dedicated real estate professionals
           with a shared passion for helping clients find their perfect homes. With years of 
           experience and a deep understanding of the local market, we are committed to providing
           personalized solutions that cater to your unique needs and preferences.

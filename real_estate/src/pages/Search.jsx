@@ -246,7 +246,7 @@ function Search() {
           {!loading &&
             listings.length > 0 &&
             listings.map((listing) => (
-              <ListingItem key={listing._id} listing={listing} />
+              <ListingItem key={listing._id} listings={listing} />
             ))}
 
             {showMore && (

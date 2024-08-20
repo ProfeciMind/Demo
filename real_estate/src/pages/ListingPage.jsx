@@ -93,14 +93,14 @@ function ListingPage() {
           )}
           <div className="flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4">
             <p className="text-2xl font-semibold">
-              {listing.name}-${" "}
+              {listing.name} - ${""}
               {listing.offer
                 ? listing.discountPrice.toLocaleString("en-US")
                 : listing.regularPrice.toLocaleString("en-US")}
-              {listing.type === "Rent" && "/ month "}
+              {listing.type === "Rent" && "/month "}
             </p>
 
-            <p className="flex items-center mt-6 gap-2 text-slate-600   text-sm">
+            <p className="flex items-center mt-4 gap-2 text-slate-600   text-sm">
               <FaMapMarkedAlt className="text-green-500" />
               {listing.address}
             </p>
@@ -125,7 +125,7 @@ function ListingPage() {
               {listing.description}
             </p>
             <ul className="flex flex-wrap text-green-500 font-semibold text-sm items-center gap-4 sm:gap-6">
-              <li className="flex item-center gap-1 whitespace-nowrap">
+              <li className="flex item-center gap-2 whitespace-nowrap">
                 <FaBed className="text-lg" />
                 {listing.bedroom > 1
                   ? `${listing.bedroom} Beds`
