@@ -251,7 +251,9 @@ function Search() {
 
             {showMore && (
               <button className="text-green-700 hover:underline p-7 text-center w-full" 
-              onClick={onShowMreClick}>Show More</button>
+              onClick={onShowMreClick}>
+              Show More
+              </button>
             )}
         </div>
       </div>
