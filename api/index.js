@@ -6,6 +6,7 @@ const mongoURI = "mongodb+srv://harsh:harsh@mern-estate.huxd3yr.mongodb.net/mern
 import { configDotenv } from 'dotenv';
 import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 configDotenv();
 const connectToMongo = async () => {
@@ -17,7 +18,11 @@ const connectToMongo = async () => {
         console.error(error);
     }
 }
+
+const __dirname=path.resolve();
+
 connectToMongo();
+
 const app = express();
 
 app.use(express.json());
@@ -32,6 +37,12 @@ app.listen(3000, () => {
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing",listingRouter);
+
+app.use(express.static(path.join(__dirname,'/real_estate/dist')));
+
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname,'real_estate','dist','index.html'));
+});
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
