@@ -7,7 +7,7 @@ import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
   apiKey:import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "dream-homes-hdpd.onrender.com",
+  authDomain: "mern-estate-7d271.firebaseapp.com",
   projectId: "mern-estate-7d271",
   storageBucket: "mern-estate-7d271.appspot.com",
   messagingSenderId: "891133597045",

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const baseURL = "http://localhost:3000";
 
 export default function OAuth() {
-  // Hooks should be called at the top level of your component
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,11 +17,11 @@ export default function OAuth() {
       const auth = getAuth(app);
 
       const result = await signInWithPopup(auth, provider);
-
+      
       const resd = await fetch(`/api/auth/google`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // Fixed typo
+          "Content-Type": "application/json", 
         },
         body: JSON.stringify({
           name: result.user.displayName,
@@ -31,7 +31,6 @@ export default function OAuth() {
       });
       const data = await resd.json();
 
-      // Dispatch and navigate after successful response
       dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
