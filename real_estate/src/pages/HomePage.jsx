@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay , Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import ListingItem from "../Components/ListingItem";
@@ -73,10 +73,15 @@ function HomePage() {
 
       {/* SWIPER */}
       <Swiper
-        navigation
-        // spaceBetween={50}
-        // slidesPerView={1}
-        // pagination={{ clickable: true }}
+        modules={[Navigation, Autoplay]} // Enable Autoplay module
+        Autoplay
+        spaceBetween={50}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        autoplay={{
+          delay: 3000, // Time between slides in milliseconds
+          disableOnInteraction: false, // Continue autoplay after user interaction
+        }}
       >
         {offerListings &&
           offerListings.length > 0 &&
